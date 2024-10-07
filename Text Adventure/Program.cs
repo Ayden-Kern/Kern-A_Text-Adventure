@@ -22,17 +22,14 @@
 
             if (race.ToUpper() == "HUMAN")
             {
-                Console.WriteLine("Nice choice");
                 ChoicesC();
             }
             else if (race.ToUpper() == "ELF")
             {
-                Console.WriteLine("Nice choice");
                 ChoicesC();
             }
             else if (race.ToUpper() == "ORK")
             {
-                Console.WriteLine("Nice choice");
                 ChoicesC();
             }
             else
@@ -47,22 +44,18 @@
             Class = Console.ReadLine();
             if (Class.ToUpper() == "FIGHTER")
             {
-                Console.WriteLine("Nice choice");
                 ChoicesS();
             }
             else if (Class.ToUpper() == "BARBARIAN")
             {
-                Console.WriteLine("Nice choice");
                 ChoicesS();
             }
             else if(Class.ToUpper() == "ROUGE")
             {
-                Console.WriteLine("Nice choice");
                 ChoicesS();
             }
             else if(Class.ToUpper() == "RANGER")
             {
-                Console.WriteLine("Nice choice");
                 ChoicesS();
             }
             else
@@ -73,7 +66,7 @@
         }
         static void ChoicesS()
         {
-            Console.WriteLine("\nPick a number 1-4 (in some cases) to progress the story \n You wake up in a coffin what do you do");
+            Console.WriteLine("\nPick a number 1-4 (in some cases) to progress the story \nYou wake up in a coffin what do you do");
             Console.WriteLine("1) Break throught the top of the coffin | 2) Break through the bottom of the coffin and tunnel out");
             string choice1 = Console.ReadLine();
             if (choice1 == "1")
@@ -88,7 +81,7 @@
             }
             else
             {
-                Console.WriteLine("that wasn't a choice pick again");
+                Console.WriteLine("That wasn't a choice pick again");
                 ChoicesS();
             }
         }
@@ -100,12 +93,12 @@
             if (choice2 == "1")
             {
                 Console.WriteLine("You look around and see that you are in a decripit looking abandoned graveyard");
-                ChoicesS2();
+                ChoicesD();
             }
             else if (choice2 == "2")
             {
-                Console.WriteLine("You look at your grave which reads\nHere lies "+character_name+" Died **/**/****\nwas a fantastic "+ Class +"\nhonored by their people the "+race+"s");
-                ChoicesS2();
+                Console.WriteLine("You look at your grave which reads\nHere lies "+character_name+" Died **/**/****\nWas a fantastic "+ Class +"\nHonored by their people the "+race+"s");
+                ChoicesD();
             }
             else if (choice2 == "3")
             {
@@ -124,19 +117,23 @@
             string Direction = Console.ReadLine();
             if (Direction == "1")
             {
-                Console.WriteLine("you run away from the creature before it notices you");
+                Console.WriteLine("You run away from the creature before it notices you");
+                Console.WriteLine("\nYou wind up running and bumping into the jaws of a dragon skeleton\nYou noticed that since you triped over it that the top jaw is now falling towards you");
+                Death();
             }
             else if (Direction == "2")
             {
-                Console.WriteLine("you slowly sneak towards it");
+                Console.WriteLine("You slowly sneak towards it");
+                Sneak();
             }
             else if (Direction == "3")
             {
-                Console.WriteLine("you start running towards it");
+                Console.WriteLine("You start running towards it");
+                Charge();
             }
             else
             {
-                Console.WriteLine("that wasn't an option");
+                Console.WriteLine("That wasn't an option");
                 ChoicesD();
             }
         }
@@ -144,38 +141,197 @@
         {
             if (Class == "ROUGE")
             {
-                Console.WriteLine("You expertly sneak behind the creature with your dagger ready");
+                Console.WriteLine("You expertly sneak behind the creature with your dagger ready\n");
+                SneakAttack();
             }
             else if (Class == "RANGER")
             {
-                Console.WriteLine("You sneak to a good position in range and ready your bow");
+                Console.WriteLine("You sneak to a good position in range and ready your bow\n");
+                SneakAttack();
             }
             else if (Class =="FIGHTER")
             {
-                Console.WriteLine("You slowly sneak towards the creature");
+                Console.WriteLine("You slowly sneak towards the creature\n");
+                SneakAttack();
             }
             else if(Class == "BARBARIAN")
             {
-                Console.WriteLine("You clumsily sneak towards the creature");
+                Console.WriteLine("You clumsily sneak towards the creature and it turns to you slowly\n");
+                SneakAttack();
             }
         }
         static void Charge()
         {
             if(Class == "BARBARIAN")
             {
-                Console.WriteLine("You charge the creature while weilding a double sided axe");
+                Console.WriteLine("You charge the creature while weilding a double sided axe\n");
+                Fight();
             }
             else if(Class == "FIGHTER")
             {
-                Console.WriteLine("You expertly start charging the creature with a short sword and shield");
+                Console.WriteLine("You expertly start charging the creature with a short sword and shield\n");
+                Fight();
             }
-            if (Class == "ROUGE")
+            else if (Class == "ROUGE")
             {
-                Console.WriteLine("You charge the creature with your dagger in hand");
+                Console.WriteLine("You charge the creature with your dagger in hand quickly crossing the graveyard towards the creature\n");
+                Fight();
             }
             else if (Class == "RANGER")
             {
-                Console.WriteLine("You charge the creature with an arrow notched in your bow");
+                Console.WriteLine("You charge the creature with an arrow notched in your bow\n");
+                Fight();
+            }
+        }
+        static void Fight()
+        {
+            if (Class == "BARBARIAN")
+            {
+                Console.WriteLine("You bring your double sided axe down on the creature splitting its head in half");
+                Win();
+            }
+            else if (Class == "FIGHTER")
+            {
+                Console.WriteLine("You drive your sword through a chink in the creatures bony plating and it rears back");
+                CCF();
+            }
+            else if (Class == "ROUGE")
+            {
+                Console.WriteLine("You notice that the creature has bony plates and you bring your dagger down on a lethal spot between 2 plates that you recognize");
+                Win();
+            }
+            else if (Class == "RANGER")
+            {
+                Console.WriteLine("You fire your arrow at the creature but it seems to slightly sink in to its bony plating and it turns to you\nIts charging at you now");
+                CCR();
+            }
+        }
+        static void SneakAttack()
+        {
+            if (Class == "BARBARIAN")
+            {
+                Console.WriteLine("You see the bony plating move as it turns to you");
+                CCB();
+            }
+            else if (Class == "FIGHTER")
+            {
+                Console.WriteLine("You see the spacing between it's bony plating and drive your swort sword through its back and heart\nYou see it start wriggling and convulsing till it stops dead");
+                Win();
+            }
+            else if (Class == "ROUGE")
+            {
+                Console.WriteLine("You see all of it's bony plating close up and all the spaces between the plating");
+                Console.WriteLine("You jump onto the back of the creature and drive your dagger through a space in the plating killing it instantly");
+                Win();
+            }
+            else if (Class == "RANGER")
+            {
+                Console.WriteLine("Your expert eyes notice the bony plating and spaces between them along with the eyes even from far away");
+                LRC();
+            }
+        }
+        static void Death()
+        {
+            Console.WriteLine("\nYou realize you died for a second time and now you are forced to stay dead");
+        }
+        static void LRC()
+        {
+            Console.WriteLine("What do you do\n1) Fire the arrow through its eyes | 2) Fire it through the space in the plating | 3) Run away\n");
+            string action = Console.ReadLine();
+            if (action == "1")
+            {
+                Console.WriteLine("You fire your arrow through one of its eyes and it drops dead");
+            }
+            else if (action == "2")
+            {
+                Console.WriteLine("The arrow flies through a space in the plating and into the creatures cheast and it keels over dead\n");
+                Win();
+            }
+            else if(action == "3")
+            {
+                Console.WriteLine("You run away and fall off the edge of a cliff and fall for around thirty minutes before hitting the ground");
+                Death();
+            }
+            else
+            {
+                Console.WriteLine("Pick again");
+                LRC();
+            }
+        }
+        static void CCB()
+        {
+            Console.WriteLine("What do you do\n1) Swing your axe towards the space on the neck of the creature | 2) Run away\n");
+            string action = Console.ReadLine();
+            if (action == "1")
+            {
+                Console.WriteLine("You cleanly decapitate the creature\n");
+                Win();
+            }
+            else if (action == "2")
+            {
+                Console.WriteLine("You run and get caught by the tentacles of the creature and realize you can't move anymore\nIt towers over your paralized form and starts eating you");
+                Death();
+            }
+            else
+            {
+                Console.WriteLine("Pick again");
+                CCB();
+            }
+        }
+        static void Win()
+        {
+            Console.WriteLine("As you stand over the dead creature you realise it was overlooking a cliff");
+            Console.WriteLine("You look over and see a vast land with deserts and forests that probably have tons of creatures\nYou relize you will have to explore these lands to find out what brought you back from the dead");
+            Console.WriteLine("To be continued");
+        }
+        static void CCR()
+        {
+            Console.WriteLine("What do you do now\n1) Dodge | 2) Use your dagger to fight | 3) Run away");
+            string action = Console.ReadLine();
+            if (action == "1")
+            {
+                Console.WriteLine("you dodge the creture as it lunges at you");
+                CCR();
+            }
+            else if (action == "2")
+            {
+                Console.WriteLine("You drive your dagger into a chink in the bony plates and it starts convulsing and dying");
+                Win();
+            }
+            else if (action == "3")
+            {
+                Console.WriteLine("You run and get caught by the tentacles of the creature and realize you can't move anymore\nIt towers over your paralized form and starts eating you");
+                Death();
+            }
+            else
+            {
+                Console.WriteLine("Pick again\n");
+                CCR();
+            }
+        }
+        static void CCF()
+        {
+            Console.WriteLine("What do you do\n1) Drive your sword deeper | 2) jump off the creature and use your dagger to continue the fight | 3) Run) ");
+            string action = Console.ReadLine();
+            if (action == "1")
+            {
+                Console.WriteLine("You drive the sword deeper in the creature and it starts convulsing");
+                Win();
+            }
+            else if (action == "2")
+            {
+                Console.WriteLine("You flip off the creature and charge at it and drive your dagger through a space in its plating killing it");
+                Win();
+            }
+            else if(action == "3")
+            {
+                Console.WriteLine("You run and get caught by the tentacles of the creature and realize you can't move anymore\nIt towers over your paralized form and starts eating you");
+                Death();
+            }
+            else
+            {
+                Console.WriteLine("Pick again\n");
+                CCR();
             }
         }
     }
