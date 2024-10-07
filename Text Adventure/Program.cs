@@ -6,6 +6,7 @@
         static string race;
         static string Class;
 
+        //Pick a name
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Ayden K's text adventure of D&D");
@@ -15,6 +16,7 @@
             Console.WriteLine(character_name + " nice name");
             ChoicesR();
         }
+        //Pick a race
         static void ChoicesR()
         {
             Console.WriteLine("\n What race do you want to play as? \n Human | Elf | Ork");
@@ -38,6 +40,7 @@
                 ChoicesR();
             }
         }
+        //Pick a class
         static void ChoicesC()
         {
             Console.WriteLine("\nWhat class do you want to play as \n Fighter | Barbarian | Rouge | Ranger");
@@ -64,6 +67,7 @@
                 ChoicesC();
             }
         }
+        //Explains choices and starts the story
         static void ChoicesS()
         {
             Console.WriteLine("\nPick a number 1-4 (in some cases) to progress the story \nYou wake up in a coffin what do you do");
@@ -85,17 +89,20 @@
                 ChoicesS();
             }
         }
+        //continues the story after escaping the coffin
         static void ChoicesS2()
         {
             Console.WriteLine("\nYou have dug your way out of the ground and see that you are in an abandoned graveyard\nWhat do you do now");
             Console.WriteLine("1) Look around | 2) Look at your grave | 3) Walk in a random direction");
             string choice2 = Console.ReadLine();
+            int ChoiceAsInt = Convert.ToInt32(choice2);
             if (choice2 == "1")
             {
                 Console.WriteLine("You look around and see that you are in a decripit looking abandoned graveyard");
-                ChoicesD();
+                Console.WriteLine("You notice the gravestone of the grave you crawled out of");
+                ChoiceAsInt += 1;
             }
-            else if (choice2 == "2")
+            if (ChoiceAsInt == 2 || choice2 =="2")
             {
                 Console.WriteLine("You look at your grave which reads\nHere lies "+character_name+" Died **/**/****\nWas a fantastic "+ Class +"\nHonored by their people the "+race+"s");
                 ChoicesD();
@@ -110,6 +117,7 @@
                 ChoicesS2();
             }
         }
+        //starts combat choices
         static void ChoicesD()
         {
             Console.WriteLine("\nYou walk in a random direction and see a creature\nIt is pale yellow and looks like a 3-4ft long centipede that has 8 tenticles near it's mouth");
@@ -137,6 +145,7 @@
                 ChoicesD();
             }
         }
+        //starts stealth for classes
         static void Sneak()
         {
             if (Class == "ROUGE")
@@ -160,6 +169,7 @@
                 SneakAttack();
             }
         }
+        //starts charging at enemies for characters
         static void Charge()
         {
             if(Class == "BARBARIAN")
@@ -183,6 +193,7 @@
                 Fight();
             }
         }
+        //Starts close combat
         static void Fight()
         {
             if (Class == "BARBARIAN")
@@ -206,6 +217,7 @@
                 CCR();
             }
         }
+        //Starts stealth combat
         static void SneakAttack()
         {
             if (Class == "BARBARIAN")
@@ -230,10 +242,12 @@
                 LRC();
             }
         }
+        //Death screen
         static void Death()
         {
             Console.WriteLine("\nYou realize you died for a second time and now you are forced to stay dead");
         }
+        //Ranger close combat
         static void LRC()
         {
             Console.WriteLine("What do you do\n1) Fire the arrow through its eyes | 2) Fire it through the space in the plating | 3) Run away\n");
@@ -258,6 +272,7 @@
                 LRC();
             }
         }
+        //Barbarian close combat
         static void CCB()
         {
             Console.WriteLine("What do you do\n1) Swing your axe towards the space on the neck of the creature | 2) Run away\n");
@@ -278,12 +293,14 @@
                 CCB();
             }
         }
+        //Win\End game
         static void Win()
         {
             Console.WriteLine("As you stand over the dead creature you realise it was overlooking a cliff");
             Console.WriteLine("You look over and see a vast land with deserts and forests that probably have tons of creatures\nYou relize you will have to explore these lands to find out what brought you back from the dead");
             Console.WriteLine("To be continued");
         }
+        //Close combat for ranger
         static void CCR()
         {
             Console.WriteLine("What do you do now\n1) Dodge | 2) Use your dagger to fight | 3) Run away");
@@ -309,6 +326,7 @@
                 CCR();
             }
         }
+        //Close combat for fighter
         static void CCF()
         {
             Console.WriteLine("What do you do\n1) Drive your sword deeper | 2) jump off the creature and use your dagger to continue the fight | 3) Run) ");
