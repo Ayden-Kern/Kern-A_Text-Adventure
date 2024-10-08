@@ -148,22 +148,22 @@
         //starts stealth for classes
         static void Sneak()
         {
-            if (Class == "ROUGE")
+            if (Class.ToUpper() == "ROUGE")
             {
                 Console.WriteLine("You expertly sneak behind the creature with your dagger ready\n");
                 SneakAttack();
             }
-            else if (Class == "RANGER")
+            else if (Class.ToUpper() == "RANGER")
             {
                 Console.WriteLine("You sneak to a good position in range and ready your bow\n");
                 SneakAttack();
             }
-            else if (Class =="FIGHTER")
+            else if (Class.ToUpper() =="FIGHTER")
             {
                 Console.WriteLine("You slowly sneak towards the creature\n");
                 SneakAttack();
             }
-            else if(Class == "BARBARIAN")
+            else if(Class.ToUpper() == "BARBARIAN")
             {
                 Console.WriteLine("You clumsily sneak towards the creature and it turns to you slowly\n");
                 SneakAttack();
@@ -172,22 +172,22 @@
         //starts charging at enemies for characters
         static void Charge()
         {
-            if(Class == "BARBARIAN")
+            if(Class.ToUpper() == "BARBARIAN")
             {
                 Console.WriteLine("You charge the creature while weilding a double sided axe\n");
                 Fight();
             }
-            else if(Class == "FIGHTER")
+            else if(Class.ToUpper() == "FIGHTER")
             {
                 Console.WriteLine("You expertly start charging the creature with a short sword and shield\n");
                 Fight();
             }
-            else if (Class == "ROUGE")
+            else if (Class.ToUpper() == "ROUGE")
             {
                 Console.WriteLine("You charge the creature with your dagger in hand quickly crossing the graveyard towards the creature\n");
                 Fight();
             }
-            else if (Class == "RANGER")
+            else if (Class.ToUpper() == "RANGER")
             {
                 Console.WriteLine("You charge the creature with an arrow notched in your bow\n");
                 Fight();
@@ -196,22 +196,22 @@
         //Starts close combat
         static void Fight()
         {
-            if (Class == "BARBARIAN")
+            if (Class.ToUpper() == "BARBARIAN")
             {
                 Console.WriteLine("You bring your double sided axe down on the creature splitting its head in half");
                 Win();
             }
-            else if (Class == "FIGHTER")
+            else if (Class.ToUpper() == "FIGHTER")
             {
                 Console.WriteLine("You drive your sword through a chink in the creatures bony plating and it rears back");
                 CCF();
             }
-            else if (Class == "ROUGE")
+            else if (Class.ToUpper() == "ROUGE")
             {
                 Console.WriteLine("You notice that the creature has bony plates and you bring your dagger down on a lethal spot between 2 plates that you recognize");
                 Win();
             }
-            else if (Class == "RANGER")
+            else if (Class.ToUpper() == "RANGER")
             {
                 Console.WriteLine("You fire your arrow at the creature but it seems to slightly sink in to its bony plating and it turns to you\nIts charging at you now");
                 CCR();
@@ -220,23 +220,23 @@
         //Starts stealth combat
         static void SneakAttack()
         {
-            if (Class == "BARBARIAN")
+            if (Class.ToUpper() == "BARBARIAN")
             {
                 Console.WriteLine("You see the bony plating move as it turns to you");
                 CCB();
             }
-            else if (Class == "FIGHTER")
+            else if (Class.ToUpper() == "FIGHTER")
             {
                 Console.WriteLine("You see the spacing between it's bony plating and drive your swort sword through its back and heart\nYou see it start wriggling and convulsing till it stops dead");
                 Win();
             }
-            else if (Class == "ROUGE")
+            else if (Class.ToUpper() == "ROUGE")
             {
                 Console.WriteLine("You see all of it's bony plating close up and all the spaces between the plating");
                 Console.WriteLine("You jump onto the back of the creature and drive your dagger through a space in the plating killing it instantly");
                 Win();
             }
-            else if (Class == "RANGER")
+            else if (Class.ToUpper() == "RANGER")
             {
                 Console.WriteLine("Your expert eyes notice the bony plating and spaces between them along with the eyes even from far away");
                 LRC();
