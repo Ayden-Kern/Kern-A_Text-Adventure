@@ -2,9 +2,15 @@
 {
     internal class Program
     {
-        static string character_name;
-        static string race;
-        static string Class;
+        public struct Character_info
+        {
+            public string Name;
+            public string Race;
+            public string Class;
+        }
+
+        public static Character_info player_info;
+        public static Character_info enemy_info;
 
         //Pick a name
         static void Main(string[] args)
@@ -12,25 +18,27 @@
             Console.WriteLine("Welcome to Ayden K's text adventure of D&D");
             Console.WriteLine("What is your characters name?");
 
-            character_name = Console.ReadLine();
-            Console.WriteLine(character_name + " nice name");
+            player_info.Name = Console.ReadLine();
+            Console.WriteLine(player_info.Name + " nice name");
             ChoicesR();
         }
-        //Pick a race
+        //Pick a player_info.Race
         static void ChoicesR()
         {
-            Console.WriteLine("\n What race do you want to play as? \n Human | Elf | Ork");
-            race = Console.ReadLine();
+            string[] Races = ["Human", "Elf", "Orc"];
 
-            if (race.ToUpper() == "HUMAN")
+            Console.WriteLine("\n What race do you want to play as? \n " + Races[0] + " | " + Races[1] + " | " + Races[2] + "");
+            player_info.Race = Console.ReadLine();
+
+            if (player_info.Race.ToUpper() == Races[0].ToUpper())
             {
                 ChoicesC();
             }
-            else if (race.ToUpper() == "ELF")
+            else if (player_info.Race.ToUpper() == Races[1].ToUpper())
             {
                 ChoicesC();
             }
-            else if (race.ToUpper() == "ORK")
+            else if (player_info.Race.ToUpper() == Races[2].ToUpper())
             {
                 ChoicesC();
             }
@@ -44,20 +52,20 @@
         static void ChoicesC()
         {
             Console.WriteLine("\nWhat class do you want to play as \n Fighter | Barbarian | Rouge | Ranger");
-            Class = Console.ReadLine();
-            if (Class.ToUpper() == "FIGHTER")
+            player_info.Class = Console.ReadLine();
+            if (player_info.Class.ToUpper() == "FIGHTER")
             {
                 ChoicesS();
             }
-            else if (Class.ToUpper() == "BARBARIAN")
+            else if (player_info.Class.ToUpper() == "BARBARIAN")
             {
                 ChoicesS();
             }
-            else if(Class.ToUpper() == "ROUGE")
+            else if(player_info.Class.ToUpper() == "ROUGE")
             {
                 ChoicesS();
             }
-            else if(Class.ToUpper() == "RANGER")
+            else if(player_info.Class.ToUpper() == "RANGER")
             {
                 ChoicesS();
             }
@@ -104,7 +112,7 @@
             }
             if (ChoiceAsInt == 2 || choice2 =="2")
             {
-                Console.WriteLine("You look at your grave which reads\nHere lies "+character_name+" Died **/**/****\nWas a fantastic "+ Class +"\nHonored by their people the "+race+"s");
+                Console.WriteLine("You look at your grave which reads\nHere lies "+player_info.Name+" Died **/**/****\nWas a fantastic "+ player_info.Class +"\nHonored by their people the "+player_info.Race+"s");
                 ChoicesD();
             }
             else if (choice2 == "3")
@@ -148,22 +156,22 @@
         //starts stealth for classes
         static void Sneak()
         {
-            if (Class.ToUpper() == "ROUGE")
+            if (player_info.Class.ToUpper() == "ROUGE")
             {
                 Console.WriteLine("You expertly sneak behind the creature with your dagger ready\n");
                 SneakAttack();
             }
-            else if (Class.ToUpper() == "RANGER")
+            else if (player_info.Class.ToUpper() == "RANGER")
             {
                 Console.WriteLine("You sneak to a good position in range and ready your bow\n");
                 SneakAttack();
             }
-            else if (Class.ToUpper() =="FIGHTER")
+            else if (player_info.Class.ToUpper() =="FIGHTER")
             {
                 Console.WriteLine("You slowly sneak towards the creature\n");
                 SneakAttack();
             }
-            else if(Class.ToUpper() == "BARBARIAN")
+            else if(player_info.Class.ToUpper() == "BARBARIAN")
             {
                 Console.WriteLine("You clumsily sneak towards the creature and it turns to you slowly\n");
                 SneakAttack();
@@ -172,22 +180,22 @@
         //starts charging at enemies for characters
         static void Charge()
         {
-            if(Class.ToUpper() == "BARBARIAN")
+            if(player_info.Class.ToUpper() == "BARBARIAN")
             {
                 Console.WriteLine("You charge the creature while weilding a double sided axe\n");
                 Fight();
             }
-            else if(Class.ToUpper() == "FIGHTER")
+            else if(player_info.Class.ToUpper() == "FIGHTER")
             {
                 Console.WriteLine("You expertly start charging the creature with a short sword and shield\n");
                 Fight();
             }
-            else if (Class.ToUpper() == "ROUGE")
+            else if (player_info.Class.ToUpper() == "ROUGE")
             {
                 Console.WriteLine("You charge the creature with your dagger in hand quickly crossing the graveyard towards the creature\n");
                 Fight();
             }
-            else if (Class.ToUpper() == "RANGER")
+            else if (player_info.Class.ToUpper() == "RANGER")
             {
                 Console.WriteLine("You charge the creature with an arrow notched in your bow\n");
                 Fight();
@@ -196,22 +204,22 @@
         //Starts close combat
         static void Fight()
         {
-            if (Class.ToUpper() == "BARBARIAN")
+            if (player_info.Class.ToUpper() == "BARBARIAN")
             {
                 Console.WriteLine("You bring your double sided axe down on the creature splitting its head in half");
                 Win();
             }
-            else if (Class.ToUpper() == "FIGHTER")
+            else if (player_info.Class.ToUpper() == "FIGHTER")
             {
                 Console.WriteLine("You drive your sword through a chink in the creatures bony plating and it rears back");
                 CCF();
             }
-            else if (Class.ToUpper() == "ROUGE")
+            else if (player_info.Class.ToUpper() == "ROUGE")
             {
                 Console.WriteLine("You notice that the creature has bony plates and you bring your dagger down on a lethal spot between 2 plates that you recognize");
                 Win();
             }
-            else if (Class.ToUpper() == "RANGER")
+            else if (player_info.Class.ToUpper() == "RANGER")
             {
                 Console.WriteLine("You fire your arrow at the creature but it seems to slightly sink in to its bony plating and it turns to you\nIts charging at you now");
                 CCR();
@@ -220,23 +228,23 @@
         //Starts stealth combat
         static void SneakAttack()
         {
-            if (Class.ToUpper() == "BARBARIAN")
+            if (player_info.Class.ToUpper() == "BARBARIAN")
             {
                 Console.WriteLine("You see the bony plating move as it turns to you");
                 CCB();
             }
-            else if (Class.ToUpper() == "FIGHTER")
+            else if (player_info.Class.ToUpper() == "FIGHTER")
             {
                 Console.WriteLine("You see the spacing between it's bony plating and drive your swort sword through its back and heart\nYou see it start wriggling and convulsing till it stops dead");
                 Win();
             }
-            else if (Class.ToUpper() == "ROUGE")
+            else if (player_info.Class.ToUpper() == "ROUGE")
             {
                 Console.WriteLine("You see all of it's bony plating close up and all the spaces between the plating");
                 Console.WriteLine("You jump onto the back of the creature and drive your dagger through a space in the plating killing it instantly");
                 Win();
             }
-            else if (Class.ToUpper() == "RANGER")
+            else if (player_info.Class.ToUpper() == "RANGER")
             {
                 Console.WriteLine("Your expert eyes notice the bony plating and spaces between them along with the eyes even from far away");
                 LRC();
